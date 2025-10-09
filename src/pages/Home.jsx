@@ -501,7 +501,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
   }
           ].map((product, idx) => (
             <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500">
-              <div className="tp flex sm:flex-wrap flex-row gap-4 p-2.5 transition-all duration-500">
+              <div className="tp flex sm:flex-wrap lg:flex-nowrap flex-row gap-4 p-2.5 transition-all duration-500">
                 <div className="bg-[#009689] h-40 sm:h-48 min-w-40 sm:min-w-48 rounded-lg"></div>
            <div className="flex flex-col">
                               <h3 className="font-medium text-base mb-3 text-[#313656]">{product.name}</h3>
