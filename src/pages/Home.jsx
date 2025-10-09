@@ -130,8 +130,8 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
       age: '',
       experience: '',
       education: '',
-      telegram:'',https://github.com/alone025/socialism.git
-      message:"",
+      telegram:'',
+      message:'',
       workerID:'',
       workerName:'',
       price_per_hour:'',
