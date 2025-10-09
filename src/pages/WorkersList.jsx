@@ -411,7 +411,7 @@ ${formData.experience}
             <a href="/#services" className="hover:text-teal-400 transition">УСЛУГИ</a>
             <a href="/#contacts" className="hover:text-teal-400 transition">КОНТАКТЫ</a>
           </nav>
-            <div className="men">
+            <div className="men lg:hidden">
                       <TextAlignJustify className="w-8 h-8 lg:hidden cursor-pointer" onClick={() => setIsMenuOpen(true)}  />
                     </div>
         </div>
@@ -442,7 +442,7 @@ ${formData.experience}
             <a href="/#services" className="hover:text-teal-400 transition">УСЛУГИ</a>
             <a href="/#contacts" className="hover:text-teal-400 transition">КОНТАКТЫ</a>
           </nav>
-                  <div className="men">
+                  <div className="men lg:hidden">
             <TextAlignJustify className="w-8 h-8 lg:hidden cursor-pointer" onClick={() => setIsMenuOpen(true)}  />
           </div>
         </div>

@@ -1,39 +1,10 @@
-// import React, { useEffect } from 'react';
-// import Hero from '../components/Hero';
-// import Services from '../components/Services';
-// import Trust from '../components/Trust';
-// import Partners from '../components/Partners';
-// import SVOFamily from '../components/SVOFamily';
-// import { useLocation } from 'react-router-dom';
 
-// const Home = () => {
-//       const location = useLocation();
-
-//   useEffect(() => {
-//     if (location.hash) {
-//       const element = document.querySelector(location.hash);
-//       if (element) {
-//         element.scrollIntoView({ behavior: "smooth" });
-//       }
-//     }
-//   }, [location]);
-//   return (
-//     <div>
-//       <Hero />
-//       <Services />
-//       <Trust />
-//       <Partners />
-//       <SVOFamily />
-//     </div>
-//   );
-// };
-
-// export default Home;
 
 
 import React from 'react';
 import { Phone, Mail, MapPin, CheckCircle, Award, Baby,HeartHandshake , BrushCleaning, GraduationCap, X, Menu, TextAlignJustify } from 'lucide-react';
 import { sendToTelegram } from '../utills/sendToTelegram';
+import { useLocation } from 'react-router-dom';
 
 export default function Home() {
     const [isScrolled, setIsScrolled] = React.useState(false);
@@ -59,6 +30,8 @@ export default function Home() {
 
   });
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+        const location = useLocation();
+
   
 
       const handleSubmit= async (e) => {
@@ -151,6 +124,16 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+
+  React.useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
     const partners = [
     { name: 'Моя работа', logo: '/moyaR.jpg' },
     { name: 'РУДН', logo: '/rudn.svg' },
@@ -187,7 +170,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
             <a href="/#services" className="hover:text-teal-400 transition">УСЛУГИ</a>
             <a href="/#contacts" className="hover:text-teal-400 transition">КОНТАКТЫ</a>
           </nav>
-          <div className="men">
+          <div className="men lg:hidden">
             <TextAlignJustify className="w-8 h-8 lg:hidden cursor-pointer" onClick={() => setIsMenuOpen(true)}  />
           </div>
         </div>
@@ -220,7 +203,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
             <a href="/#services" className="hover:text-teal-400 transition">УСЛУГИ</a>
             <a href="/#contacts" className="hover:text-teal-400 transition">КОНТАКТЫ</a>
           </nav>
-                  <div className="men">
+                  <div className="men lg:hidden">
             <TextAlignJustify className="w-8 h-8 lg:hidden cursor-pointer" onClick={() => setIsMenuOpen(true)}  />
           </div>
         </div>
