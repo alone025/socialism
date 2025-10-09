@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+/* @import 'tailwindcss/base'; */
+/* @import 'tailwindcss/components';
+@import 'tailwindcss/utilities'; */
+
+
+html{
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-family: 'Rubik', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(87, 87, 87, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  :root {
+    /* Primary (Blue Shades) */
+    --color-primary-50: #EBEBEB;   /* lightest */
+    --color-primary-100: #E1E1E1;  /* lighter */
+    --color-primary-500: #082D73;  /* main blue */
+    --color-primary-600: #05265D;  /* darker blue */
+    --color-primary-700: #002331;  /* darkest */
+
+    /* Secondary (Accent, keep yellow-ish or swap to lighter blue/gray) */
+    --color-secondary-50: #f0f6ff;
+    --color-secondary-100: #d9e6ff;
+    --color-secondary-500: #4a90e2; /* accent blue */
+
+    /* Font */
+    --font-rubik: 'Rubik', sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Map custom colors into Tailwind utilities */
+  .bg-primary-50 { background-color: var(--color-primary-50); }
+  .bg-primary-100 { background-color: var(--color-primary-100); }
+  .bg-primary-500 { background-color: var(--color-primary-500); }
+  .bg-primary-600 { background-color: var(--color-primary-600); }
+  .bg-primary-700 { background-color: var(--color-primary-700); }
+
+  .bg-secondary-50 { background-color: var(--color-secondary-50); }
+  .bg-secondary-100 { background-color: var(--color-secondary-100); }
+  .bg-secondary-500 { background-color: var(--color-secondary-500); }
+
+  .text-primary-500 { color: var(--color-primary-500); }
+  .text-secondary-500 { color: var(--color-secondary-500); }
+  .text-primary-50 { color: var(--color-primary-50); }
+  .text-primary-100 { color: var(--color-primary-100); }
+
+  .font-rubik { font-family: var(--font-rubik); }
+}
+
+
+button{
+  cursor: pointer;
+}
+
+
+.yandex-map-wrap { position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 */ }
+.yandex-map-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0; }
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+
