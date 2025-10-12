@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <Link to="/" className="inline-block mb-6">
               <img
-                src="/logo2.svg"
+                src="/logo23.png"
                 alt="ALUSSINE"
                 className="w-28 contrast-0 opacity-90 hover:opacity-100 transition-opacity"
               />

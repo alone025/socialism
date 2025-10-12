@@ -4,6 +4,464 @@ import React from "react";
 import dataLocal from  "../data/local.data.json";
 import { sendToTelegram } from "../utills/sendToTelegram";
 
+// const workers = [
+//   // 1. НЯНЯ (Москва)
+//   {
+//     "name": "Анна Смирнова",
+//     "experience": "7 лет",
+//     "price_per_hour": "4000₽",
+//     "about": "Опытная няня, работала с детьми от 6 месяцев до 7 лет. Проводит развивающие занятия, помогает с режимом дня и питанием.",
+//     "city": "Москва",
+//     "category": "НЯНЯ",
+//     "categories": ["Присмотр за младенцами", "Развивающие игры", "Прогулки с детьми"],
+//     "skills": ["Уход за детьми", "Первая помощь", "Спокойствие"],
+//     "rating": 4.9,
+//     "reviews": 120,
+//     "contact": {
+//       "email": "smirnova.anna@example.com",
+//       "phone": "+7 (915) 123-45-67"
+//     }
+//   },
+
+//   // 2. УБОРКА КВАРТИРЫ (Москва)
+//   {
+//     "name": "Мария Ковалёва",
+//     "experience": "5 лет",
+//     "price_per_hour": "2500₽",
+//     "about": "Профессиональная уборщица с опытом работы в семьях и офисах. Быстрая и качественная уборка, только гипоаллергенные средства.",
+//     "city": "Москва",
+//     "category": "УБОРКА КВАРТИРЫ",
+//     "categories": ["Генеральная уборка", "Мытьё полов", "Мытьё окон"],
+//     "skills": ["Аккуратность", "Организация пространства", "Ответственность"],
+//     "rating": 4.8,
+//     "reviews": 98,
+//     "contact": {
+//       "email": "kovaleva.maria@example.com",
+//       "phone": "+7 (926) 555-11-22"
+//     }
+//   },
+
+//   // 3. ВОСПИТАТЕЛЬ (Санкт-Петербург)
+//   {
+//     "name": "Елена Воронова",
+//     "experience": "10 лет",
+//     "price_per_hour": "4500₽",
+//     "about": "Детский воспитатель и гувернантка. Помогает с уроками, развивающими занятиями и социализацией.",
+//     "city": "Санкт-Петербург",
+//     "category": "ВОСПИТАТЕЛЬ",
+//     "categories": ["Помощь с уроками", "Чтение", "Развивающие занятия"],
+//     "skills": ["Педагогика", "Терпение", "Творческий подход"],
+//     "rating": 4.9,
+//     "reviews": 110,
+//     "contact": {
+//       "email": "voronova.elena@example.com",
+//       "phone": "+7 (911) 222-33-44"
+//     }
+//   },
+
+//   // 4. ПОМОЩЬ В БЫТУ (Москва)
+//   {
+//     "name": "Светлана Орлова",
+//     "experience": "8 лет",
+//     "price_per_hour": "3000₽",
+//     "about": "Помощница по дому для многодетных семей. Готовка, уборка, походы в магазин, глажка, помощь в организации быта.",
+//     "city": "Москва",
+//     "category": "ПОМОЩЬ В БЫТУ",
+//     "categories": ["Готовка", "Покупка продуктов", "Уборка"],
+//     "skills": ["Многозадачность", "Домашнее хозяйство", "Ответственность"],
+//     "rating": 4.8,
+//     "reviews": 85,
+//     "contact": {
+//       "email": "orlova.svetlana@example.com",
+//       "phone": "+7 (999) 123-45-67"
+//     }
+//   },
+//   // 5. НЯНЯ (Новосибирск)
+//   {
+//     "name": "Ольга Пшеничная",
+//     "experience": "6 лет",
+//     "price_per_hour": "3500₽",
+//     "about": "Няня с педагогическим образованием. Проводит развивающие занятия, игры, помогает с режимом дня.",
+//     "city": "Новосибирск",
+//     "category": "НЯНЯ",
+//     "categories": ["Развивающие игры", "Прогулки", "Подготовка к школе"],
+//     "skills": ["Педагогика", "Коммуникабельность", "Терпение"],
+//     "rating": 4.7,
+//     "reviews": 76,
+//     "contact": {
+//       "email": "pshenichnaya.olga@example.com",
+//       "phone": "+7 (913) 111-22-33"
+//     }
+//   },
+
+//   // 6. УБОРКА КВАРТИРЫ (Казань)
+//   {
+//     "name": "Наталья Сергеева",
+//     "experience": "4 года",
+//     "price_per_hour": "2200₽",
+//     "about": "Предлагаю регулярную и генеральную уборку. Использую профессиональные средства, ответственная и пунктуальная.",
+//     "city": "Казань",
+//     "category": "УБОРКА КВАРТИРЫ",
+//     "categories": ["Генеральная уборка", "Чистка кухни", "Стирка"],
+//     "skills": ["Чистоплотность", "Скорость", "Внимание к деталям"],
+//     "rating": 4.6,
+//     "reviews": 54,
+//     "contact": {
+//       "email": "sergeeva.natalia@example.com",
+//       "phone": "+7 (917) 444-55-66"
+//     }
+//   },
+
+//   // 7. ВОСПИТАТЕЛЬ (Москва)
+//   {
+//     "name": "Дарья Лебедева",
+//     "experience": "9 лет",
+//     "price_per_hour": "5000₽",
+//     "about": "Гувернантка с опытом работы в частных семьях. Обучение чтению, письму, помощь с уроками и развитием речи.",
+//     "city": "Москва",
+//     "category": "ВОСПИТАТЕЛЬ",
+//     "categories": ["Помощь с уроками", "Обучение чтению", "Развивающие занятия"],
+//     "skills": ["Логика", "Творчество", "Педагогика"],
+//     "rating": 5.0,
+//     "reviews": 130,
+//     "contact": {
+//       "email": "lebedeva.daria@example.com",
+//       "phone": "+7 (925) 333-44-55"
+//     }
+//   },
+
+//   // 8. ПОМОЩЬ В БЫТУ (Екатеринбург)
+//   {
+//     "name": "Александра Крылова",
+//     "experience": "7 лет",
+//     "price_per_hour": "2800₽",
+//     "about": "Помогаю по дому: готовка, стирка, глажка, закупка продуктов. Опыт работы с многодетными семьями.",
+//     "city": "Екатеринбург",
+//     "category": "ПОМОЩЬ В БЫТУ",
+//     "categories": ["Готовка", "Стирка", "Покупка продуктов"],
+//     "skills": ["Организация", "Ответственность", "Хозяйственность"],
+//     "rating": 4.8,
+//     "reviews": 90,
+//     "contact": {
+//       "email": "krylova.alexandra@example.com",
+//       "phone": "+7 (912) 888-99-00"
+//     }
+//   },
+
+//   // 9. НЯНЯ (Казань)
+//   {
+//     "name": "Юлия Захарова",
+//     "experience": "5 лет",
+//     "price_per_hour": "3200₽",
+//     "about": "Няня для детей от 1 года. Занятия по методикам Монтессори, прогулки, помощь в развитии навыков.",
+//     "city": "Казань",
+//     "category": "НЯНЯ",
+//     "categories": ["Прогулки", "Развивающие игры", "Чтение книг"],
+//     "skills": ["Терпение", "Педагогический подход", "Ответственность"],
+//     "rating": 4.7,
+//     "reviews": 68,
+//     "contact": {
+//       "email": "zakharova.yulia@example.com",
+//       "phone": "+7 (917) 222-11-00"
+//     }
+//   },
+
+//   // 10. УБОРКА КВАРТИРЫ (Москва)
+//   {
+//     "name": "Тамара Иванова",
+//     "experience": "12 лет",
+//     "price_per_hour": "2700₽",
+//     "about": "Домработница с большим опытом. Глубокая уборка, уход за мебелью и текстилем, поддержание порядка каждый день.",
+//     "city": "Москва",
+//     "category": "УБОРКА КВАРТИРЫ",
+//     "categories": ["Поддерживающая уборка", "Мытьё окон", "Чистка ванной"],
+//     "skills": ["Пунктуальность", "Аккуратность", "Надёжность"],
+//     "rating": 4.9,
+//     "reviews": 140,
+//     "contact": {
+//       "email": "ivanova.tamara@example.com",
+//       "phone": "+7 (916) 777-55-11"
+//     }
+//   },
+//   // 11. ВОСПИТАТЕЛЬ (Новосибирск)
+//   {
+//     "name": "Марина Беляева",
+//     "experience": "8 лет",
+//     "price_per_hour": "4300₽",
+//     "about": "Воспитатель с опытом работы в детском саду. Проводит развивающие занятия, логопедические игры, помогает с социализацией.",
+//     "city": "Новосибирск",
+//     "category": "ВОСПИТАТЕЛЬ",
+//     "categories": ["Развитие речи", "Игровые занятия", "Поддержка дисциплины"],
+//     "skills": ["Педагогика", "Терпение", "Творческий подход"],
+//     "rating": 4.8,
+//     "reviews": 74,
+//     "contact": {
+//       "email": "belyaeva.marina@example.com",
+//       "phone": "+7 (913) 555-66-77"
+//     }
+//   },
+
+//   // 12. ПОМОЩЬ В БЫТУ (Москва)
+//   {
+//     "name": "Ирина Соколова",
+//     "experience": "10 лет",
+//     "price_per_hour": "3200₽",
+//     "about": "Опытная помощница по хозяйству. Готовит домашнюю еду, помогает по дому, следит за чистотой и порядком.",
+//     "city": "Москва",
+//     "category": "ПОМОЩЬ В БЫТУ",
+//     "categories": ["Готовка", "Стирка", "Организация дома"],
+//     "skills": ["Домашнее хозяйство", "Ответственность", "Аккуратность"],
+//     "rating": 4.9,
+//     "reviews": 112,
+//     "contact": {
+//       "email": "sokolova.irina@example.com",
+//       "phone": "+7 (925) 999-88-77"
+//     }
+//   },
+
+//   // 13. НЯНЯ (Санкт-Петербург)
+//   {
+//     "name": "Валентина Гордеева",
+//     "experience": "9 лет",
+//     "price_per_hour": "3800₽",
+//     "about": "Няня для детей от 0 до 5 лет. Опыт работы с младенцами, знает основы первой помощи, проводит сенсорные и развивающие игры.",
+//     "city": "Санкт-Петербург",
+//     "category": "НЯНЯ",
+//     "categories": ["Присмотр за младенцами", "Развивающие игры", "Укладка спать"],
+//     "skills": ["Забота", "Спокойствие", "Ответственность"],
+//     "rating": 4.8,
+//     "reviews": 95,
+//     "contact": {
+//       "email": "gordeeva.valentina@example.com",
+//       "phone": "+7 (911) 444-33-22"
+//     }
+//   },
+
+//   // 14. УБОРКА КВАРТИРЫ (Екатеринбург)
+//   {
+//     "name": "София Никитина",
+//     "experience": "3 года",
+//     "price_per_hour": "2100₽",
+//     "about": "Специалист по уборке. Быстро и качественно поддерживаю идеальную чистоту в квартире. Возможен выезд несколько раз в неделю.",
+//     "city": "Екатеринбург",
+//     "category": "УБОРКА КВАРТИРЫ",
+//     "categories": ["Ежедневная уборка", "Чистка кухни", "Мытьё полов"],
+//     "skills": ["Чистоплотность", "Скорость", "Ответственность"],
+//     "rating": 4.7,
+//     "reviews": 60,
+//     "contact": {
+//       "email": "nikitina.sophia@example.com",
+//       "phone": "+7 (912) 111-22-55"
+//     }
+//   }
+// ];
+
+const workers = [
+  {
+    "name": "Анна Смирнова",
+    "experience": "7 лет",
+    "price_per_hour": "4000₽",
+    "about": "Опытная няня, работала с детьми от 6 месяцев до 7 лет. Проводит развивающие занятия, помогает с режимом дня и питанием.",
+    "city": "Москва",
+    "region":" Москва",
+    "category": "НЯНЯ",
+    "categories": ["Уход за детьми 0-1 год", "Уход за детьми 1-3 года", "Уход за детьми 3-6 лет", "Развивающие игры", "Прогулки с детьми"],
+    "skills": ["Уход за детьми", "Первая помощь", "Спокойствие", "Английский язык", "Готовка"],
+    "rating": 4.9,
+    "reviews": 120,
+    "contact": {
+      "email": "smirnova.anna@example.com",
+      "phone": "+7 (915) 123-45-67"
+    }
+  },
+  {
+    "name": "Мария Петрова",
+    "experience": "5 лет",
+    "price_per_hour": "3500₽",
+    "about": "Профессиональная сиделка для пожилых людей. Ответственная, внимательная, с медицинским образованием.",
+    "city": "Санкт-Петербург",
+    "region":"Ленинградская область",
+    "category": "СИДЕЛКА",
+    "categories": ["Приготовление еды", "Уборка", "Стирка", "Покупка продуктов", "Медицинский уход"],
+    "skills": ["Первая помощь", "Уборка", "Готовка", "Терпение", "Внимательность"],
+    "rating": 4.8,
+    "reviews": 85,
+    "contact": {
+      "email": "petrova.maria@example.com",
+      "phone": "+7 (911) 234-56-78"
+    }
+  },
+  {
+    "name": "Елена Козлова",
+    "experience": "8 лет",
+    "price_per_hour": "4500₽",
+    "about": "Репетитор по английскому языку и математике. Индивидуальный подход к каждому ученику, подготовка к экзаменам.",
+    "city": "Москва",
+    "region":" Москва",
+    "category": "РЕПЕТИТОР",
+    "categories": ["Помощь с домашними заданиями", "Подготовка к школе", "Обучение языкам", "Математика", "Наука"],
+    "skills": ["Английский язык", "Помощь с уроками", "Математика", "Объяснение", "Терпение"],
+    "rating": 4.9,
+    "reviews": 150,
+    "contact": {
+      "email": "kozlova.elena@example.com",
+      "phone": "+7 (916) 345-67-89"
+    }
+  },
+  {
+    "name": "Ольга Новикова",
+    "experience": "6 лет",
+    "price_per_hour": "3000₽",
+    "about": "Домработница с опытом работы в семьях. Поддерживаю чистоту и порядок, ответственная и аккуратная.",
+    "city": "Москва",
+    "region":" Москва",
+    "category": "УБОРЩИЦА",
+    "categories": ["Уборка", "Стирка", "Глажка", "Покупка продуктов", "Поддержание порядка"],
+    "skills": ["Уборка", "Стирка", "Глажка", "Покупки", "Аккуратность"],
+    "rating": 4.7,
+    "reviews": 95,
+    "contact": {
+      "email": "novikova.olga@example.com",
+      "phone": "+7 (917) 456-78-90"
+    }
+  },
+  {
+    "name": "Ирина Федорова",
+    "experience": "10 лет",
+    "price_per_hour": "5000₽",
+    "about": "Профессиональный повар с образованием. Готовлю блюда русской, европейской и азиатской кухни.",
+    "city": "Санкт-Петербург",
+    "region":"Ленинградская область",
+    "category": "ПОВАР",
+    "categories": ["Приготовление еды", "Покупка продуктов", "Диетическое питание", "Детское питание"],
+    "skills": ["Готовка", "Покупки", "Кулинария", "Творчество", "Чистота"],
+    "rating": 4.9,
+    "reviews": 200,
+    "contact": {
+      "email": "fedorova.irina@example.com",
+      "phone": "+7 (918) 567-89-01"
+    }
+  },
+  {
+    "name": "Светлана Иванова",
+    "experience": "12 лет",
+    "price_per_hour": "3500₽",
+    "about": "Опытный водитель с безаварийной ездой. Аккуратная, пунктуальная, знаю город отлично.",
+    "city": "Москва",
+    "region":" Москва",
+    "category": "ВОДИТЕЛЬ",
+    "categories": ["Вождение", "Транспортные услуги", "Покупка продуктов", "Сопровождение"],
+    "skills": ["Вождение", "Покупки", "Пунктуальность", "Внимательность", "Опыт"],
+    "rating": 4.8,
+    "reviews": 110,
+    "contact": {
+      "email": "ivanova.svetlana@example.com",
+      "phone": "+7 (919) 678-90-12"
+    }
+  },
+  {
+    "name": "Татьяна Волкова",
+    "experience": "4 года",
+    "price_per_hour": "3800₽",
+    "about": "Няня-репетитор для детей дошкольного и младшего школьного возраста. Развивающие занятия и подготовка к школе.",
+    "city": "Екатеринбург",
+    "region":"Свердловская область",
+    "category": "НЯНЯ",
+    "categories": ["Уход за детьми 3-6 лет", "Подготовка к школе", "Развивающие игры", "Помощь с домашними заданиями"],
+    "skills": ["Уход за детьми", "Рисование", "Спорт", "Помощь с уроками", "Творчество"],
+    "rating": 4.7,
+    "reviews": 65,
+    "contact": {
+      "email": "volkova.tatyana@example.com",
+      "phone": "+7 (920) 789-01-23"
+    }
+  },
+  {
+    "name": "Наталья Белова",
+    "experience": "2 года",
+    "price_per_hour": "2500₽",
+    "about": "Помощница по хозяйству. Выполняю уборку, стирку, глажку, покупку продуктов. Ответственная и трудолюбивая.",
+    "city": "Новосибирск",
+    "region":"Новосибирская область",
+    "category": "УБОРЩИЦА",
+    "categories": ["Уборка", "Стирка", "Глажка", "Покупка продуктов", "Уход за домом"],
+    "skills": ["Уборка", "Стирка", "Глажка", "Покупки", "Трудолюбие"],
+    "rating": 4.6,
+    "reviews": 45,
+    "contact": {
+      "email": "belova.natalya@example.com",
+      "phone": "+7 (921) 890-12-34"
+    }
+  },
+  {
+    "name": "Юлия Дмитриева",
+    "experience": "9 лет",
+    "price_per_hour": "4200₽",
+    "about": "Репетитор по музыке и английскому языку. Обучаю игре на фортепиано и вокалу детей и взрослых.",
+    "city": "Москва",
+    "region":" Москва",
+    "category": "РЕПЕТИТОР",
+    "categories": ["Обучение языкам", "Музыка", "Творческое развитие", "Уход за детьми 6+ лет"],
+    "skills": ["Музыка", "Английский язык", "Творчество", "Обучение", "Терпение"],
+    "rating": 4.8,
+    "reviews": 130,
+    "contact": {
+      "email": "dmitrieva.yulia@example.com",
+      "phone": "+7 (922) 901-23-45"
+    }
+  },
+  {
+    "name": "Александра Павлова",
+    "experience": "5 лет",
+    "price_per_hour": "3200₽",
+    "about": "Сиделка с медицинским образованием. Специализируюсь на послеоперационном уходе и хронических заболеваниях.",
+    "city": "Казань",
+    "region":"Татарстан",
+    "category": "СИДЕЛКА",
+    "categories": ["Медицинский уход", "Приготовление еды", "Уборка", "Покупка продуктов", "Первая помощь"],
+    "skills": ["Первая помощь", "Готовка", "Уборка", "Забота", "Медицина"],
+    "rating": 4.7,
+    "reviews": 75,
+    "contact": {
+      "email": "pavlova.alexandra@example.com",
+      "phone": "+7 (923) 012-34-56"
+    }
+  },
+  {
+    "name": "Виктория Соколова",
+    "experience": "8 лет",
+    "price_per_hour": "4500₽",
+    "about": "Профессиональная няня для грудничков. Имею медицинское образование и рекомендации от предыдущих работодателей.",
+    "city": "Москва",
+    "region":" Москва",
+    "category": "НЯНЯ",
+    "categories": ["Уход за детьми 0-1 год", "Первая помощь", "Детское питание", "Режим дня"],
+    "skills": ["Уход за детьми", "Первая помощь", "Готовка", "Спокойствие", "Внимательность"],
+    "rating": 4.9,
+    "reviews": 140,
+    "contact": {
+      "email": "sokolova.viktoria@example.com",
+      "phone": "+7 (924) 123-45-67"
+    }
+  },
+  {
+    "name": "Екатерина Морозова",
+    "experience": "3 года",
+    "price_per_hour": "2800₽",
+    "about": "Помощница по хозяйству и уходу за детьми младшего школьного возраста. Помогаю с уроками и домашними делами.",
+    "city": "Ростов-на-Дону",
+    "region":"Ростовская область",
+    "category": "УБОРЩИЦА",
+    "categories": ["Уборка", "Стирка", "Уход за детьми 6+ лет", "Помощь с домашними заданиями", "Готовка"],
+    "skills": ["Уборка", "Стирка", "Помощь с уроками", "Готовка", "Ответственность"],
+    "rating": 4.6,
+    "reviews": 55,
+    "contact": {
+      "email": "morozova.ekaterina@example.com",
+      "phone": "+7 (925) 234-56-78"
+    }
+  }
+];
 
 const WorkersList = () => {
         const [isScrolled, setIsScrolled] = React.useState(false);
@@ -16,6 +474,18 @@ const WorkersList = () => {
 
       const [selectedWorker2, setSelectedWorker2] = React.useState(null);
   const [showContactModal, setShowContactModal] = React.useState(false);
+
+  // New states
+  const [search, setSearch] = React.useState("");
+const [minPrice, setMinPrice] = React.useState("");
+const [maxPrice, setMaxPrice] = React.useState("");
+const [experience, setExperience] = React.useState("");
+// const [city, setCity] = React.useState("");
+// const [region, setRegion] = React.useState("");
+// const [selectedSkills, setSelectedSkills] = React.useState<string[]>([]);
+// const [selectedCategories, setSelectedCategories] = React.useState<string[]>([]);
+const [filteredSpecialists, setFilteredSpecialists] = React.useState(workers);
+
 
 
     // const skills = ["React", "Node.js", "UI/UX", "Python", "Django", "DevOps"];
@@ -172,217 +642,142 @@ ${formData.experience}
   }
 };
 
+// Filter function
+const applyFilter = () => {
+  let filtered = [...workers]; // Assuming 'workers' is your main data array
 
-      const workers = [
-  {
-    "name": "Доктор Анастасия Иванова",
-    "experience": "10 лет",
-    "price_per_hour": "5000₽",
-    "about": "Доктор Анастасия Иванова — клинический психолог с 10-летним опытом работы в области психотерапии. Она помогает пациентам справляться с депрессией, тревожностью, семейными проблемами и посттравматическими расстройствами.",
-    "city": "Москва",
-    "category": "Психология и психотерапия",
-    "categories": ["Помощь с домашними заданиями", "Обучение языкам"],
-    "skills": ["Первая помощь", "Музыка", "Наука"],
-    "rating": 4.9,
-    "reviews": 134,
-    "contact": {
-      "email": "ivanova.anastasia@example.com",
-      "phone": "+7 (900) 123-45-67"
-    }
-  },
-  {
-    "name": "Доктор Алексей Смирнов",
-    "experience": "15 лет",
-    "price_per_hour": "7000₽",
-    "about": "Доктор Алексей Смирнов — ортопед, специализирующийся на лечении спортивных травм и замене суставов. Применяет инновационные методы лечения, включая минимально инвазивные операции.",
-    "city": "Санкт-Петербург",
-    "category": "Ортопедия и спортивная медицина",
-    "categories": ["Помощь с домашними заданиями", "Стирка"],
-    "skills": ["Спорт", "Первая помощь", "Вождение"],
-    "rating": 4.8,
-    "reviews": 212,
-    "contact": {
-      "email": "smirnov.alexey@example.com",
-      "phone": "+7 (921) 555-12-34"
-    }
-  },
-  {
-    "name": "Ирина Васильева, PhD",
-    "experience": "8 лет",
-    "price_per_hour": "6000₽",
-    "about": "Ирина Васильева — эксперт по анализу данных и искусственному интеллекту. Разрабатывает алгоритмы машинного обучения для прогнозирования и оптимизации бизнес-процессов.",
-    "city": "Новосибирск",
-    "category": "ИТ и аналитика",
-    "categories": ["Подготовка к школе", "Помощь с домашними заданиями"],
-    "skills": ["Математика", "Наука", "Готовка"],
-    "rating": 5.0,
-    "reviews": 89,
-    "contact": {
-      "email": "vasilieva.irina@example.com",
-      "phone": "+7 (913) 987-65-43"
-    }
-  },
-  {
-    "name": "Мария Петрова",
-    "experience": "6 лет",
-    "price_per_hour": "3500₽",
-    "about": "Мария Петрова — репетитор по английскому языку. Работает со взрослыми и школьниками, готовит к экзаменам, применяет коммуникативные методики.",
-    "city": "Екатеринбург",
-    "category": "Образование",
-    "categories": ["Обучение языкам", "Подготовка к школе"],
-    "skills": ["Английский язык", "Помощь с уроками", "Математика"],
-    "rating": 4.7,
-    "reviews": 67,
-    "contact": {
-      "email": "petrova.maria@example.com",
-      "phone": "+7 (912) 555-23-44"
-    }
-  },
-  {
-    "name": "Сергей Николаев",
-    "experience": "12 лет",
-    "price_per_hour": "5500₽",
-    "about": "Сергей Николаев — веб-разработчик, создающий современные сайты и обучающий начинающих программистов.",
-    "city": "Казань",
-    "category": "ИТ и разработка",
-    "categories": ["Помощь с домашними заданиями", "Обучение языкам"],
-    "skills": ["Наука", "Математика", "Рисование"],
-    "rating": 4.9,
-    "reviews": 98,
-    "contact": {
-      "email": "nikolaev.sergey@example.com",
-      "phone": "+7 (917) 666-77-88"
-    }
-  },
-  {
-    "name": "Ольга Кузнецова",
-    "experience": "9 лет",
-    "price_per_hour": "4500₽",
-    "about": "Ольга Кузнецова — дизайнер интерьеров, создающая комфортные и функциональные пространства.",
-    "city": "Москва",
-    "category": "Дизайн",
-    "categories": ["Уход за детьми 3-6 лет", "Уборка"],
-    "skills": ["Рисование", "Музыка", "Глажка"],
-    "rating": 4.8,
-    "reviews": 121,
-    "contact": {
-      "email": "kuznetsova.olga@example.com",
-      "phone": "+7 (916) 333-22-11"
-    }
-  },
-  {
-    "name": "Дмитрий Орлов",
-    "experience": "5 лет",
-    "price_per_hour": "3000₽",
-    "about": "Дмитрий Орлов — фитнес-тренер, специализирующийся на персональных тренировках и похудении.",
-    "city": "Ростов-на-Дону",
-    "category": "Фитнес",
-    "categories": ["Уход за детьми 6+ лет", "Приготовление еды"],
-    "skills": ["Спорт", "Вождение", "Первая помощь"],
-    "rating": 4.6,
-    "reviews": 55,
-    "contact": {
-      "email": "orlov.dmitry@example.com",
-      "phone": "+7 (908) 123-11-22"
-    }
-  },
-  {
-    "name": "Татьяна Громова",
-    "experience": "11 лет",
-    "price_per_hour": "4000₽",
-    "about": "Татьяна Громова — логопед-дефектолог, работающая с детьми и развивающая их речь и коммуникацию.",
-    "city": "Самара",
-    "category": "Педагогика",
-    "categories": ["Уход за детьми 3-6 лет", "Подготовка к школе"],
-    "skills": ["Помощь с уроками", "Математика", "Наука"],
-    "rating": 4.9,
-    "reviews": 73,
-    "contact": {
-      "email": "gromova.tatiana@example.com",
-      "phone": "+7 (909) 777-88-99"
-    }
-  },
-  {
-    "name": "Андрей Мельников",
-    "experience": "14 лет",
-    "price_per_hour": "8000₽",
-    "about": "Андрей Мельников — юрист, специализирующийся на корпоративном и гражданском праве.",
-    "city": "Москва",
-    "category": "Юриспруденция",
-    "categories": ["Помощь с домашними заданиями", "Покупка продуктов"],
-    "skills": ["Математика", "Английский язык", "Наука"],
-    "rating": 4.9,
-    "reviews": 185,
-    "contact": {
-      "email": "melnikov.andrey@example.com",
-      "phone": "+7 (905) 432-10-10"
-    }
-  },
-  {
-    "name": "Екатерина Волкова",
-    "experience": "7 лет",
-    "price_per_hour": "3800₽",
-    "about": "Екатерина Волкова — визажист и стилист, создающая свадебные и вечерние образы.",
-    "city": "Краснодар",
-    "category": "Красота",
-    "categories": ["Уход за детьми 1-3 года", "Уборка"],
-    "skills": ["Рисование", "Глажка", "Покупки"],
-    "rating": 4.8,
-    "reviews": 102,
-    "contact": {
-      "email": "volkova.ekaterina@example.com",
-      "phone": "+7 (964) 123-45-67"
-    }
-  },
-  {
-    "name": "Павел Киселёв",
-    "experience": "9 лет",
-    "price_per_hour": "4200₽",
-    "about": "Павел Киселёв — маркетолог-аналитик, помогающий компаниям повышать эффективность рекламных кампаний.",
-    "city": "Нижний Новгород",
-    "category": "Маркетинг",
-    "categories": ["Подготовка к школе", "Покупка продуктов"],
-    "skills": ["Наука", "Математика", "Готовка"],
-    "rating": 4.7,
-    "reviews": 64,
-    "contact": {
-      "email": "kiselev.pavel@example.com",
-      "phone": "+7 (910) 222-33-44"
-    }
-  },
-  {
-    "name": "Виктория Соколова",
-    "experience": "4 года",
-    "price_per_hour": "2500₽",
-    "about": "Виктория Соколова — фотограф, специализирующаяся на портретных и свадебных съёмках.",
-    "city": "Пермь",
-    "category": "Фотография",
-    "categories": ["Уход за детьми 1-3 года", "Стирка"],
-    "skills": ["Рисование", "Музыка", "Покупки"],
-    "rating": 4.8,
-    "reviews": 79,
-    "contact": {
-      "email": "sokolova.viktoria@example.com",
-      "phone": "+7 (902) 654-33-21"
-    }
-  },
-  {
-    "name": "Роман Захаров",
-    "experience": "13 лет",
-    "price_per_hour": "6500₽",
-    "about": "Роман Захаров — бизнес-консультант и коуч по управлению персоналом, помогает компаниям развивать лидерство.",
-    "city": "Воронеж",
-    "category": "Бизнес и консалтинг",
-    "categories": ["Помощь с домашними заданиями", "Обучение языкам"],
-    "skills": ["Английский язык", "Наука", "Спорт"],
-    "rating": 5.0,
-    "reviews": 115,
-    "contact": {
-      "email": "zakharov.roman@example.com",
-      "phone": "+7 (903) 777-12-34"
-    }
+  // Search filter (by name, about, skills, or categories)
+  if (search.trim()) {
+    const searchTerm = search.toLowerCase().trim();
+    filtered = filtered.filter(worker => 
+      worker.name?.toLowerCase().includes(searchTerm) ||
+      worker.about?.toLowerCase().includes(searchTerm) ||
+      worker.skills?.some(skill => skill.toLowerCase().includes(searchTerm)) ||
+      worker.categories?.some(category => category.toLowerCase().includes(searchTerm))
+    );
   }
-]
+
+  // Price filter - extract numeric value from price_per_hour string
+  if (minPrice) {
+    filtered = filtered.filter(worker => {
+      const workerPrice = parseInt(worker.price_per_hour.replace(/[^\d]/g, ''));
+      return workerPrice >= parseInt(minPrice);
+    });
+  }
+  if (maxPrice) {
+    filtered = filtered.filter(worker => {
+      const workerPrice = parseInt(worker.price_per_hour.replace(/[^\d]/g, ''));
+      return workerPrice <= parseInt(maxPrice);
+    });
+  }
+
+  // Experience filter - extract years from experience string
+  if (experience) {
+    filtered = filtered.filter(worker => {
+      const expYears = parseInt(worker.experience.split(' ')[0]);
+      
+      switch (experience) {
+        case 'no':
+          return expYears === 0 || worker.experience.toLowerCase().includes('нет');
+        case '1-3':
+          return expYears >= 1 && expYears <= 3;
+        case '3+':
+          return expYears >= 3;
+        default:
+          return true;
+      }
+    });
+  }
+
+  // City filter
+  if (city) {
+    filtered = filtered.filter(worker => 
+      worker.region?.toLowerCase().includes(city.toLowerCase())
+    );
+  }
+
+    // Region filter (removed since we only have city in new data structure)
+  if (region && city) {
+    filtered = filtered.filter(worker => 
+      worker.city?.toLowerCase().includes(region.toLowerCase())
+    );
+  }
+
+
+
+
+
+  // Skills filter
+  if (selectedSkills.length > 0) {
+    filtered = filtered.filter(worker =>
+      selectedSkills.every(skill => 
+        worker.skills?.some(workerSkill => 
+          workerSkill.toLowerCase().includes(skill.toLowerCase())
+        )
+      )
+    );
+  }
+
+  // Categories filter (using the category field and categories array)
+  if (selectedCategories.length > 0) {
+    filtered = filtered.filter(worker =>
+      selectedCategories.some(category => {
+        // Map filter categories to worker category values
+        const categoryMap = {
+          'Няни': ['НЯНЯ', 'няня', 'уход за детьми'],
+          'Сиделки': ['СИДЕЛКА', 'сиделка', 'медицинский уход'],
+          'Уборщицы': ['УБОРЩИЦА', 'уборщица', 'помощник по хозяйству', 'домработница'],
+          'Репетиторы': ['РЕПЕТИТОР', 'репетитор', 'преподаватель', 'учитель'],
+          'Повара': ['ПОВАР', 'повар', 'кулинар'],
+          'Водители': ['ВОДИТЕЛЬ', 'водитель', 'шофер']
+        };
+
+        const workerProperties = [
+          worker.category,
+          ...(worker.categories || [])
+        ].map(prop => prop?.toLowerCase());
+
+        return categoryMap[category]?.some(term => 
+          workerProperties.some(prop => prop?.includes(term.toLowerCase()))
+        );
+      })
+    );
+  }
+
+  // Update filtered results
+  setFilteredSpecialists(filtered);
+  setShowFilter(false);
+  
+  // Show results count
+  if (filtered.length === 0) {
+    alert('По вашему запросу ничего не найдено');
+  }
+};
+
+
+
+// Reset filters function (updated for new data structure)
+const resetFilters = () => {
+  setSearch('');
+  setMinPrice('');
+  setMaxPrice('');
+  setExperience('');
+  setCity('');
+  setRegion(''); // Keep for compatibility, but not used in new structure
+  setSelectedSkills([]);
+  setSelectedCategories([]);
+  setFilteredSpecialists(workers); // Reset to all workers
+  setShowFilter(false);
+};
+// Toggle function for skills and categories
+// const toggleItem = (array, setArray, item) => {
+//   if (array.includes(item)) {
+//     setArray(array.filter(i => i !== item));
+//   } else {
+//     setArray([...array, item]);
+//   }
+// };
+
 
 
   return (
@@ -392,7 +787,7 @@ ${formData.experience}
           <div className="flex items-center gap-5">
             <div className="w-20 h-20 flex items-center justify-center font-bold text-xl cursor-pointer" onClick={()=> window.open('/', "_current")}>
               {/* БС */}
-              <img src="/logo2.svg" alt="logo" className='' />
+              <img src="/logo23.png" alt="logo" className='' />
             </div>
             <div className="hidden sm:flex gap-6 text-base">
               <span className="flex items-center gap-1">
@@ -421,9 +816,9 @@ ${formData.experience}
         <header className={`text-white z-[11111] transition-all duration-500 backdrop-blur-lg bg-[#3A466B]/30 shadow-lg fixed top-0 w-full left-0 ${isScrolled ? ' translate-y-0' : 'translate-y-[-100%]'}`}>
         <div className="max-w-7xl mx-auto px-3 md:px-5 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-20 h-20 flex items-center justify-center font-bold text-xl">
+            <div onClick={()=> window.open("/", "_current")} className="w-20 h-20 cursor-pointer flex items-center justify-center font-bold text-xl">
               {/* БС */}
-              <img src="/logo2.svg" alt="logo" className='' />
+              <img src="/logo23.png" alt="logo" className='' />
             </div>
             <div className="hidden sm:flex gap-6 text-base">
               <span className="flex items-center gap-1">
@@ -494,6 +889,9 @@ ${formData.experience}
             <label className="block text-gray-700 font-medium mb-1">Поиск</label>
             <input
               type="text"
+                value={search}
+  onChange={(e) => setSearch(e.target.value)}
+
               placeholder="Поиск специалиста..."
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none"
             />
@@ -508,12 +906,18 @@ ${formData.experience}
               <input
                 type="number"
                 placeholder="От"
+                  value={minPrice}
+  onChange={(e) => setMinPrice(e.target.value)}
+
                 min={0}
                 className="w-1/2 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none"
               />
               <input
                 type="number"
                 placeholder="До"
+                  value={maxPrice}
+  onChange={(e) => setMaxPrice(e.target.value)}
+
                 min={0}
                 className="w-1/2 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none"
               />
@@ -526,6 +930,8 @@ ${formData.experience}
     Опыт (лет)
   </label>
   <select
+    value={experience}
+    onChange={(e) => setExperience(e.target.value)}
     className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none"
   >
     <option value="">Выберите опыт</option>
@@ -627,13 +1033,20 @@ ${formData.experience}
 
           {/* Actions */}
           <div className="flex justify-end gap-3">
+               <button
+              onClick={resetFilters}
+              className="px-5 py-2 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-100 transition"
+            >
+              Сбросить
+            </button>
             <button
               onClick={() => setShowFilter(false)}
               className="px-5 py-1.5 sm:py-2 rounded border border-gray-400 hover:bg-gray-100 transition"
             >
               Отмена
             </button>
-            <button className="px-5 py-1.5 sm:py-2 bg-[#009689] hover:bg-teal-700 text-white rounded transition">
+            <button   onClick={applyFilter}
+ className="px-5 py-1.5 sm:py-2 bg-[#009689] hover:bg-teal-700 text-white rounded transition">
               Применить
             </button>
           </div>
@@ -644,7 +1057,7 @@ ${formData.experience}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                 {/* Example worker card */}
-                {workers.map((product, idx) => (
+                {filteredSpecialists.map((product, idx) => (
                          <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500">
               <div className="tp flex flex-col lg:flex-row gap-4 p-2.5 transition-all duration-500">
                 <div className="bg-[#009689] h-48 min-w-48 rounded-lg"></div>

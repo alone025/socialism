@@ -151,7 +151,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
           <div className="flex items-center gap-4">
             <div className="w-22 contrast- h-22 flex items-center justify-center font-bold text-xl">
               {/* БС */}
-              <img src="/logo2.svg" alt="logo" className='' />
+              <img src="/logo23.png" alt="logo" className='' />
             </div>
             <div className="hidden sm:flex gap-6 text-base">
               <span className="flex items-center gap-1">
@@ -184,7 +184,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 flex items-center justify-center font-bold text-xl">
               {/* БС */}
-              <img src="/logo2.svg" alt="logo" className='' />
+              <img src="/logo23.png" alt="logo" className='' />
             </div>
             <div className="hidden sm:flex gap-6 text-base">
               <span className="flex items-center gap-1">
@@ -316,7 +316,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
             <div className="text-gray-600 text-3xl font-medium uppercase">Специалисты</div>
           </div>
           <div className="py-4 border-b-[1.5px] border-b-teal-600/70">
-            <div className="text-3xl font-medium text-teal-600 mb-2">10+ ЛЕТ</div>
+            <div className="text-3xl font-medium text-teal-600 mb-2">2+ Года</div>
             <div className="text-gray-600 text-3xl font-medium">НА РЫНКЕ</div>
           </div>
           <div className="py-4 border-b-[1.5px] border-b-teal-600/70">
@@ -536,7 +536,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
         <div id='about' className="grid lg:grid-cols-2 gap-12 items-center scroll-m-14">
           <div className="rounded-lg overflow-hidden shadow-lg">
             <img 
-              src="/logo.svg" 
+              src="/logo23.png" 
               alt="Building detail"
               className="w-full h-full object-cover"
             />
@@ -575,7 +575,13 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
         <div className="px-3 md:px-5">
           <h2 className="text-2xl sm:text-3xl font-medium text-[#283457] mb-12">БЛАГОДАРСТВЕННЫЕ ПИСЬМА</h2>
           <div className="grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {[1, 2, 3, 4, 5].map((cert) => (
+              <div  className="bg-white rounded-lg shadow-lg p-4 aspect-[3/4]">
+                <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center">
+                  {/* <Award className="w-16 h-16 text-gray-400" /> */}
+                  <img src="/pdfpdf.jpg" alt="" />
+                </div>
+              </div>
+            {[1, 2, 3, 4].map((cert) => (
               <div key={cert} className="bg-white rounded-lg shadow-lg p-4 aspect-[3/4]">
                 <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center">
                   <Award className="w-16 h-16 text-gray-400" />

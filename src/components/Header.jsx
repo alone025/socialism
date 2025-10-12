@@ -25,7 +25,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="/logo2.svg"
+              src="/logo23.png"
               alt="ALUSSINE"
               className={`transition-all duration-300 ${
                 isScrolled ? "w-16" : "w-24"
