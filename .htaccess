@@ -1,0 +1,7 @@
+# Vercel typically does not use .htaccess files, as it runs on its own serverless infrastructure.
+# However, if you want to redirect all traffic to index.html (SPA fallback), you can use:
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
