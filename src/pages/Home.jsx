@@ -160,7 +160,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
               </span>
               <span className="flex items-center gap-1">
                 {/* <Mail className="w-4 h-4" /> */}
-                mail@allusine.ru
+                mail@sinergiya.ru
               </span>
             </div>
           </div>
@@ -193,7 +193,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
               </span>
               <span className="flex items-center gap-1">
                 {/* <Mail className="w-4 h-4" /> */}
-                mail@allusine.ru
+                mail@sinergiya.ru
               </span>
             </div>
           </div>
@@ -230,7 +230,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
               </span>
               <span className="flex items-start gap-1">
                 {/* <Mail className="w-4 h-4" /> */}
-                mail@allusine.ru
+                mail@sinergiya.ru
               </span>
             </div>
           </div>
@@ -247,7 +247,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
         </div>
         <div className="max-w-7xl mx-auto px-3 md:px-5 pt-10 sm:pt-20 pb-30 relative z-10">
           <h1 className="text-5xl sm:text-6xl font-medium mb-4">
-            ALUSSINE<span className="text-teal-400"> СЕРВИС</span>
+            Синергия<span className="text-teal-400"> СЕРВИС</span>
           </h1>
           <p className="text-base sm:text-lg font-medium max-w-2xl leading-relaxed">
             {/* КОМПЛЕКСНАЯ ИНФОРМАЦИЯ В СФЕРЕ<br/>
@@ -274,9 +274,12 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
       </section>
      </div>
 
+    
       {/* About Section */}
       <section className="bg-[#F5F5F5] mx-auto px-3 md:px-5 py-16">
-        <h2 className="text-3xl text-[#283457] font-medium mb-6">
+   <div className="kf flex w-full justify-between gap-5 md:flex-row flex-col mb-5">
+       <div className="lft">
+          <h2 className="text-3xl text-[#283457] font-medium mb-6">
           НАША КОМАНДА ЯВЛЯЕТСЯ <span className="text-teal-600">УНИКАЛЬНЫМИ<br/>СПЕЦИАЛИСТАМИ В ИРРИГАЦИИ</span>
         </h2>
         <p className="text-gray-700 mb-4 font-semibold">
@@ -308,25 +311,30 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
             <span>Присмотр за детьми от 0 лет</span>
           </li>
         </ul>
+      </div>
+      <div className="rgt flex-1/3 flex justify-center">
+          <img src="/babysitter2.png" alt="" />
+      </div>
+   </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           <div className="py-4 border-b-[1.5px] border-b-teal-600/70">
             <div className="text-3xl font-medium text-teal-600 mb-2">120+</div>
             <div className="text-gray-600 text-3xl font-medium uppercase">Специалисты</div>
           </div>
           <div className="py-4 border-b-[1.5px] border-b-teal-600/70">
-            <div className="text-3xl font-medium text-teal-600 mb-2">2+ Года</div>
+            <div className="text-3xl font-medium text-teal-600 mb-2">2+ года</div>
             <div className="text-gray-600 text-3xl font-medium">НА РЫНКЕ</div>
           </div>
           <div className="py-4 border-b-[1.5px] border-b-teal-600/70">
             <div className="text-3xl font-medium text-teal-600 mb-2">200+</div>
             <div className="text-gray-600 text-3xl font-medium uppercase">Семьи</div>
           </div>
-          <div className="py-4 border-b-[1.5px] border-b-teal-600/70">
+          {/* <div className="py-4 border-b-[1.5px] border-b-teal-600/70">
             <div className="text-3xl font-medium text-teal-600 mb-2">10+ ЛЕТ</div>
             <div className="text-gray-600 text-3xl font-medium">НА РЫНКЕ</div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -334,10 +342,10 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
       <section id='services' className="bg-[#F5F5F5] pb-16 scroll-m-20">
         <div className="mx-auto px-3 md:px-5">
           <h2 className="text-3xl font-medium text-[#283457] mb-7">НАШИ УСЛУГИ</h2>
-          <p className="text-xl mb-12 text-gray-700 font-medium">
+          <p className="text-xl mb-12 text-gray-700 font-medium uppercase max-w-4xl">
            
-            НАШИ СПЕЦИАЛИСТЫ ПРЕДОСТАВЛЯЮТ НАШИМ КЛИЕНТАМ<br/>
-            <span className="text-teal-600">УДОБНЫЕ, ПОРЯДКОВЫЕ И НЕПРЕРЫВНЫЕ УСЛУГИ</span>
+            Все наши волонтеры и сотрудники проявляют качества надежности по 
+            <span className="text-teal-600"> уходу за детьми , вызывая доверие, единственная цель</span>  показать что благополучие каждой семьи важно
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -345,30 +353,41 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
               {
                 icon: <Baby className="w-8 h-8" />,
                 title: "НЯНЯ",
-                desc: "Присмотр за детьми от 0 лет. Профессиональный уход, развивающие занятия."
+                desc: "Присмотр за детьми от 0 лет. Профессиональный уход, развивающие занятия.",
+                image:"/service1.png"
               },
               {
                 icon: <BrushCleaning className="w-8 h-8" />,
                 title: "УБОРКА КВАРТИРЫ",
-                desc: "Помощь в ведении домашнего хозяйства, поддержание чистоты"
+                desc: "Помощь в ведении домашнего хозяйства, поддержание чистоты",
+                image:"uborka.png"
               },
               {
                 icon: <GraduationCap className="w-8 h-8" />,
                 title: "ВОСПИТАТЕЛЬ",
-                desc: "Помощь с уроками, развивающие занятия, присмотр"
+                desc: "Помощь с уроками, развивающие занятия, присмотр",
+                image:"/service3.png"
               },
               {
                 icon: <HeartHandshake className="w-8 h-8" />,
                 title: "ПОМОЩЬ В БЫТУ",
-                desc: "Готовка, уборка, помощь по хозяйству для многодетных семей."
+                desc: "Готовка, уборка, помощь по хозяйству для многодетных семей.",
+                image:"/service4.png"
               }
             ].map((service, idx) => (
-              <div key={idx} className="bg-white text-[#213159] p-6 rounded-xl">
-                <div className="w-12 h-12 bg-teal-600 text-white rounded-lg flex items-center justify-center mb-4">
+              <div key={idx} className="bg-white text-[#213159] p-6 rounded-xl relative overflow-hiddden">
+                {/* Overlay */}
+                <div className=' absolute bg-black/10 w-full h-full inset-0 rounded-xl z-[1]' ></div>
+                
+                <div className="h-[235.5px] flex items-center justify-center z-[11] relative">
+                <img src={service.image} alt="" className='z-[-1] h-fit' />
+
+                </div>
+                <div className="w-12 z-10 relative h-12 bg-teal-600 text-white rounded-lg flex items-center justify-center mb-4">
                   {service.icon}
                 </div>
-                <p className="text-base font-medium leading-relaxed">{service.title}</p>
-                <p className='text-sm line-clamp-3 mt-2'>{service.desc}</p>
+                <p className="text-base z-10 relative font-medium leading-relaxed">{service.title}</p>
+                <p className='text-sm z-10 relative line-clamp-3 mt-2'>{service.desc}</p>
               </div>
             ))}
           </div>
@@ -482,16 +501,16 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {[
 {
-    "name": "Доктор Анастасия Иванова",
+    "name": "Анастасия Иванова",
     "experience": "10 лет",
     "price_per_hour": "5000₽",
-    "about": "Доктор Анастасия Иванова — клинический психолог с 10-летним опытом работы в области психотерапии. Она помогает пациентам справляться с депрессией, тревожностью, семейными проблемами и посттравматическими расстройствами. Анастасия использует когнитивно-поведенческую терапию (КПТ) и методы осознанности для создания индивидуальных терапевтических планов. Она активно работает с подростками и взрослыми, помогая наладить внутреннюю гармонию и улучшить качество жизни."
+    "about": "Анастасия Иванова — клинический психолог с 10-летним опытом работы в области психотерапии. Она помогает пациентам справляться с депрессией, тревожностью, семейными проблемами и посттравматическими расстройствами. Анастасия использует когнитивно-поведенческую терапию (КПТ) и методы осознанности для создания индивидуальных терапевтических планов. Она активно работает с подростками и взрослыми, помогая наладить внутреннюю гармонию и улучшить качество жизни."
   },
   {
-    "name": "Доктор Алексей Смирнов",
+    "name": "Алексей Смирнов",
     "experience": "15 лет",
     "price_per_hour": "7000₽",
-    "about": "Доктор Алексей Смирнов — высококвалифицированный ортопед, специализирующийся на лечении спортивных травм и замене суставов. Он имеет более 15 лет опыта работы в крупных медицинских центрах России и за рубежом. Алексей применяет инновационные методы лечения, включая минимально инвазивные операции, что позволяет пациентам быстрее восстанавливаться после травм и операций. Он активно занимается реабилитацией и поддержанием физической активности своих пациентов."
+    "about": "Алексей Смирнов — высококвалифицированный ортопед, специализирующийся на лечении спортивных травм и замене суставов. Он имеет более 15 лет опыта работы в крупных медицинских центрах России и за рубежом. Алексей применяет инновационные методы лечения, включая минимально инвазивные операции, что позволяет пациентам быстрее восстанавливаться после травм и операций. Он активно занимается реабилитацией и поддержанием физической активности своих пациентов."
   },
   {
     "name": "Ирина Васильева, PhD",
@@ -502,7 +521,10 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
           ].map((product, idx) => (
             <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500">
               <div className="tp flex sm:flex-wrap lg:flex-nowrap flex-row gap-4 p-2.5 transition-all duration-500">
-                <div className="bg-[#009689] h-40 sm:h-48 min-w-40 sm:min-w-48 rounded-lg"></div>
+                <div className="bg-[#009689] h-40 sm:h-48 min-w-40 sm:min-w-48 rounded-lg">
+                <img src="/user2.png" alt="" className=' h-40 sm:h-48 min-w-40 sm:min-w-48 ' />
+
+                </div>
            <div className="flex flex-col">
                               <h3 className="font-medium text-base mb-3 text-[#313656]">{product.name}</h3>
             <p className='mt-auto text-sm text-gray-600 mb-1'>
@@ -581,13 +603,13 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
                   <img src="/pdfpdf.jpg" alt="" />
                 </div>
               </div>
-            {[1, 2, 3, 4].map((cert) => (
+            {/* {[1, 2, 3, 4].map((cert) => (
               <div key={cert} className="bg-white rounded-lg shadow-lg p-4 aspect-[3/4]">
                 <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center">
                   <Award className="w-16 h-16 text-gray-400" />
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </section>
@@ -664,7 +686,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
             </div>
             <div>
               <h2 className="text-3xl font-semibold text-[#283457] mb-6">
-                ALUSSINE<span className="text-teal-600"> СЕРВИС</span>
+                Синергия<span className="text-teal-600"> СЕРВИС</span>
               </h2>
               <div className="space-y-4 text-gray-700">
                 <p className="flex items-start gap-3">
@@ -673,11 +695,11 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
                 </p>
                 <p className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-teal-600" />
-                  <span>Телефон: +7 927 321-82-43</span>
+                  <span>Телефон: +7 777 777-77-77</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-teal-600" />
-                  <span>Эл. почта: mail@allusine.ru</span>
+                  <span>Эл. почта: mail@sinergiya.ru</span>
                 </p>
               </div>
               <div className="mt-8 p-1.5 sm:p-4 bg-gray-50 rounded-lg">
@@ -696,7 +718,7 @@ ${activeModal === 'svo-work' ? '\n<b>⭐ СЕМЬЯ УЧАСТНИКА СВО</b
       {/* Footer Bottom */}
       <footer className="bg-slate-800 text-white py-6">
         <div className="max-w-7xl mx-auto px-6 text-center text-sm">
-          <p>© 2024 ALUSSINE-Сервис. Все права защищены.</p>
+          <p>© 2024 Синергия-Сервис. Все права защищены.</p>
         </div>
       </footer>
 
