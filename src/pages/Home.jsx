@@ -52,7 +52,7 @@ const HELP_OPTIONS = [
 export default function Home() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [activeModal, setActiveModal] = React.useState(null);
-  const [modalTable, setModalTable] = React.useState(false)
+  const [modalTable, setModalTable] = React.useState(false);
 
   const [formData, setFormData] = React.useState({
     name: "",
@@ -95,17 +95,16 @@ export default function Home() {
       e.message = "Опишите, для чего ищите помощника";
 
     setErrors(e);
-    console.log(e)
+    console.log(e);
     return Object.keys(e).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(activeModal !== "svo-work"){
-       if (!validate()) return;
+    if (activeModal !== "svo-work") {
+      if (!validate()) return;
     }
-   
 
     const success = await sendEmail(formData);
     if (success) {
@@ -242,7 +241,7 @@ export default function Home() {
               <a href="/#about" className="hover:text-teal-400 transition">
                 О НАС
               </a>
-           
+
               <a href="/#contacts" className="hover:text-teal-400 transition">
                 КОНТАКТЫ
               </a>
@@ -481,8 +480,14 @@ export default function Home() {
             ].map((service, idx) => (
               <div
                 key={idx}
-                onClick={()=> setModalTable(true)}
-                className="bg-white text-[#213159] p-6 rounded-xl relative overflow-hiddden"
+                onClick={() => {
+                  setModalTable(true);
+                  setFormData((prev) => ({
+                    ...prev,
+                    helpType: [...prev.helpType, service.title],
+                  }));
+                }}
+                className="bg-white cursor-pointer text-[#213159] p-6 rounded-xl relative overflow-hiddden"
               >
                 {/* Overlay */}
                 <div className=" absolute bg-black/10 w-full h-full inset-0 rounded-xl z-[1]"></div>
@@ -818,13 +823,12 @@ export default function Home() {
                   className="bg-teal-600 hover:bg-teal-700 px-6 py-4 mt-6 rounded-md max-w-[250px] w-full uppercase transition"
                 >
                   Связаться с нами
-             
-    </button>
+                </button>
               </form>
             </div>
           </div>
         </div>
-             </section>
+      </section>
 
       {/* Footer/Contact */}
       <section className="bg-white py-16">
@@ -975,195 +979,207 @@ export default function Home() {
       )}
 
       {modalTable && (
-            <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-111111">
-      <div className="bg-[#3A466B] overflow-scroll text-white max-lg:h-[calc(100vh-2rem)] scroll-none p-8 rounded-md w-full sm:w-[600px]">
-        {/* Close Button */}
-      
-        
-        {/* The Form */}
-        <form onSubmit={handleSubmit} className="flex flex-wrap w-full relative">
-            <button
-          onClick={()=> setModalTable(false)}
-          className="absolute -top-2 -right-2 text-white text-2xl"
-        >
-          <svg className="text-2xl" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button>
-          {/* Name */}
-          <input
-            value={formData.name}
-            onChange={(e) =>
-              setFormData({ ...formData, name: e.target.value })
-            }
-            type="text"
-            placeholder="Ваше имя *"
-            className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mb-1 w-full"
-          />
-          {errors.name && (
-            <p className="text-red-400 text-sm mb-2">{errors.name}</p>
-          )}
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-111111">
+          <div className="bg-[#3A466B] overflow-scroll text-white max-lg:h-[calc(100vh-2rem)] scroll-none p-8 rounded-md w-full sm:w-[600px]">
+            {/* Close Button */}
 
-          {/* Phone */}
-          <div className="flex w-full lg:gap-7 max-lg:flex-wrap">
-            <input
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              type="tel"
-              placeholder="Телефон *"
-              className="border-b mt-1.5 border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mb-1 w-full"
-            />
-            {errors.phone && (
-              <p className="text-red-400 text-sm mb-2">{errors.phone}</p>
-            )}
-
-            {/* Telegram */}
-            <input
-              value={formData.telegram}
-              onChange={(e) =>
-                setFormData({ ...formData, telegram: e.target.value })
-              }
-              type="text"
-              placeholder="Telegram"
-              className="border-b mt-1.5 border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mb-1 w-full"
-            />
-          </div>
-
-          {/* Number of children */}
-          <input
-            type="number"
-            min="0"
-            max="5"
-            placeholder="Сколько детей"
-            value={formData.numberOfChild}
-            onChange={(e) => handleNumberOfChildChange(Number(e.target.value))}
-            className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mt-4 w-full"
-          />
-
-          {/* Conditional child fields */}
-          {formData.numberOfChild > 0 && (
-            <div className="w-full mt-4 border-t border-b border-white/20 py-4">
-              {formData.children.map((child, index) => (
-                <div key={index} className="mb-4">
-                  <p className="text-white/80 mb-2">Ребенок {index + 1}</p>
-
-                  {/* Age */}
-                  <input
-                    placeholder="Сколько лет ребенку"
-                    value={child.age}
-                    onChange={(e) => {
-                      const newChildren = [...formData.children];
-                      newChildren[index].age = e.target.value;
-                      setFormData({ ...formData, children: newChildren });
-                    }}
-                    className="border-b border-white/50 bg-transparent text-white p-2.5 w-full mb-2"
-                  />
-
-                  {/* Type */}
-                  <RadioGroup
-                    label="Тип ребенка"
-                    name={`typeOfChild-${index}`}
-                    value={child.type}
-                    onChange={(e) => {
-                      const newChildren = [...formData.children];
-                      newChildren[index].type = e.target.value;
-                      setFormData({ ...formData, children: newChildren });
-                    }}
-                    options={[
-                      { label: "Младенец", value: "Младенец" },
-                      { label: "Дошкольник", value: "Дошкольник" },
-                      { label: "Школьник", value: "Школьник" },
-                    ]}
-                  />
-                </div>
-              ))}
-              {errors.ageOfChild && (
-                <p className="text-red-400 text-sm">{errors.ageOfChild}</p>
-              )}
-            </div>
-          )}
-
-          {/* Type of parent */}
-          <RadioGroup
-            label="Вы мама или отец?"
-            name="typeOfParent"
-            value={formData.typeOfParent}
-            error={errors.typeOfParent}
-            onChange={(e) =>
-              setFormData({ ...formData, typeOfParent: e.target.value })
-            }
-            options={[
-              { label: "Мама", value: "Мама" },
-              { label: "Отец", value: "Отец" },
-              { label: "Опекун", value: "Опекун" },
-            ]}
-          />
-
-          {/* Help type */}
-          <div className="mt-4">
-            <p className="text-white/80 mb-2">Какая помощь вам нужна?</p>
-            {HELP_OPTIONS.map((opt) => (
-              <label
-                key={opt.value}
-                className="flex items-center gap-2 mb-2 cursor-pointer"
+            {/* The Form */}
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-wrap w-full relative"
+            >
+              <button
+                onClick={() => setModalTable(false)}
+                className="absolute -top-2 -right-2 text-white text-2xl"
               >
+                <svg
+                  className="text-2xl"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-x-icon lucide-x"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+              {/* Name */}
+              <input
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                type="text"
+                placeholder="Ваше имя *"
+                className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mb-1 w-full"
+              />
+              {errors.name && (
+                <p className="text-red-400 text-sm mb-2">{errors.name}</p>
+              )}
+
+              {/* Phone */}
+              <div className="flex w-full lg:gap-7 max-lg:flex-wrap">
                 <input
-                  type="checkbox"
-                  checked={formData.helpType.includes(opt.value)}
-                  onChange={() =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      helpType: prev.helpType.includes(opt.value)
-                        ? prev.helpType.filter((v) => v !== opt.value)
-                        : [...prev.helpType, opt.value],
-                    }))
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
                   }
-                  className="accent-teal-500"
+                  type="tel"
+                  placeholder="Телефон *"
+                  className="border-b mt-1.5 border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mb-1 w-full"
                 />
-                <span>{opt.label}</span>
-              </label>
-            ))}
-            {errors.helpType && (
-              <p className="text-red-400 text-sm">{errors.helpType}</p>
-            )}
+                {errors.phone && (
+                  <p className="text-red-400 text-sm mb-2">{errors.phone}</p>
+                )}
+
+                {/* Telegram */}
+                <input
+                  value={formData.telegram}
+                  onChange={(e) =>
+                    setFormData({ ...formData, telegram: e.target.value })
+                  }
+                  type="text"
+                  placeholder="Telegram"
+                  className="border-b mt-1.5 border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mb-1 w-full"
+                />
+              </div>
+
+              {/* Number of children */}
+              <input
+                type="number"
+                min="0"
+                max="5"
+                placeholder="Сколько детей"
+                value={formData.numberOfChild}
+                onChange={(e) =>
+                  handleNumberOfChildChange(Number(e.target.value))
+                }
+                className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mt-4 w-full"
+              />
+
+              {/* Conditional child fields */}
+              {formData.numberOfChild > 0 && (
+                <div className="w-full mt-4 border-t border-b border-white/20 py-4">
+                  {formData.children.map((child, index) => (
+                    <div key={index} className="mb-4">
+                      <p className="text-white/80 mb-2">Ребенок {index + 1}</p>
+
+                      {/* Age */}
+                      <input
+                        placeholder="Сколько лет ребенку"
+                        value={child.age}
+                        onChange={(e) => {
+                          const newChildren = [...formData.children];
+                          newChildren[index].age = e.target.value;
+                          setFormData({ ...formData, children: newChildren });
+                        }}
+                        className="border-b border-white/50 bg-transparent text-white p-2.5 w-full mb-2"
+                      />
+
+                      {/* Type */}
+                      <RadioGroup
+                        label="Тип ребенка"
+                        name={`typeOfChild-${index}`}
+                        value={child.type}
+                        onChange={(e) => {
+                          const newChildren = [...formData.children];
+                          newChildren[index].type = e.target.value;
+                          setFormData({ ...formData, children: newChildren });
+                        }}
+                        options={[
+                          { label: "Младенец", value: "Младенец" },
+                          { label: "Дошкольник", value: "Дошкольник" },
+                          { label: "Школьник", value: "Школьник" },
+                        ]}
+                      />
+                    </div>
+                  ))}
+                  {errors.ageOfChild && (
+                    <p className="text-red-400 text-sm">{errors.ageOfChild}</p>
+                  )}
+                </div>
+              )}
+
+              {/* Type of parent */}
+              <RadioGroup
+                label="Вы мама или отец?"
+                name="typeOfParent"
+                value={formData.typeOfParent}
+                error={errors.typeOfParent}
+                onChange={(e) =>
+                  setFormData({ ...formData, typeOfParent: e.target.value })
+                }
+                options={[
+                  { label: "Мама", value: "Мама" },
+                  { label: "Отец", value: "Отец" },
+                  { label: "Опекун", value: "Опекун" },
+                ]}
+              />
+
+              {/* Help type */}
+              <div className="mt-4">
+                <p className="text-white/80 mb-2">Какая помощь вам нужна?</p>
+            
+                  <label
+                 
+                    className="flex items-center gap-2 mb-2 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                checked
+                     
+                      className="accent-teal-500"
+                    />
+                    <span>{formData.helpType[0]}</span>
+                  </label>
+                
+                {errors.helpType && (
+                  <p className="text-red-400 text-sm">{errors.helpType}</p>
+                )}
+              </div>
+
+              {/* Address */}
+              <input
+                placeholder="Адрес *"
+                value={formData.address}
+                onChange={(e) =>
+                  setFormData({ ...formData, address: e.target.value })
+                }
+                className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mt-4 w-full"
+              />
+              {errors.address && (
+                <p className="text-red-400 text-sm">{errors.address}</p>
+              )}
+
+              {/* Message */}
+              <textarea
+                placeholder="Для чего вы ищете помощника?"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mt-4 w-full resize-none"
+                rows={4}
+              />
+              {errors.message && (
+                <p className="text-red-400 text-sm">{errors.message}</p>
+              )}
+
+              <button
+                type="submit"
+                className="bg-teal-600 hover:bg-teal-700 px-6 py-4 mt-6 rounded-md max-w-[250px] w-full uppercase transition"
+              >
+                Связаться с нами
+              </button>
+            </form>
           </div>
-
-          {/* Address */}
-          <input
-            placeholder="Адрес *"
-            value={formData.address}
-            onChange={(e) =>
-              setFormData({ ...formData, address: e.target.value })
-            }
-            className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mt-4 w-full"
-          />
-          {errors.address && (
-            <p className="text-red-400 text-sm">{errors.address}</p>
-          )}
-
-          {/* Message */}
-          <textarea
-            placeholder="Для чего вы ищете помощника?"
-            value={formData.message}
-            onChange={(e) =>
-              setFormData({ ...formData, message: e.target.value })
-            }
-            className="border-b border-white/50 bg-transparent text-white placeholder-white/70 p-2.5 mt-4 w-full resize-none"
-            rows={4}
-          />
-          {errors.message && (
-            <p className="text-red-400 text-sm">{errors.message}</p>
-          )}
-
-          <button
-            type="submit"
-            className="bg-teal-600 hover:bg-teal-700 px-6 py-4 mt-6 rounded-md max-w-[250px] w-full uppercase transition"
-          >
-            Связаться с нами
-          </button>
-        </form>
-      </div>
-    </div>
+        </div>
       )}
     </div>
   );
