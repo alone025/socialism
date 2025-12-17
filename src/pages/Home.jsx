@@ -354,7 +354,7 @@ export default function Home() {
       </div>
 
       {/* About Section */}
-      <section id="about" className="bg-[#F5F5F5] mx-auto px-3 md:px-5 py-16">
+      <section className="bg-[#F5F5F5] mx-auto px-3 md:px-5 py-16">
         <div className="kf flex w-full justify-between gap-5 md:flex-row flex-col mb-5">
           <div className="lft">
             <h2 className="text-3xl text-[#283457] font-medium mb-6">
@@ -594,7 +594,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Products */}
+      {/* Our mission */}
+      <section className="px-3 md:px-5 py-16">
+        <div
+          id="about"
+          className="grid lg:grid-cols-2 gap-12 items-center scroll-m-14"
+        >
+          <div className="rounded-lg overflow-hidden shadow-lg">
+            <img
+              alt="Building detail"
+              className="w-full h-full object-cover"
+              src="/logo23.png"
+            />
+          </div>
+          <div>
+            <h4 className=" text-lg font-semibold text-[#283457] mb-1.5">
+              Наша миссия
+            </h4>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Повысить уровень жизни многодетных родителей, реализовать и
+              увеличить покупательскую способность страны, путем создания
+              рабочих мест для женщин и молодых амбициозных специалистов в
+              области педагогики и сфер услуг. Облегчить бытовую жизнь
+              многодетных семей.
+            </p>
+            <h4 className=" text-lg font-semibold text-[#283457] mb-1.5">
+              Наши цели
+            </h4>
+            <ul className="list-disc list-inside text-gray-700 space-y-3 leading-relaxed">
+              <li>
+                Создание надежных рабочих мест в сфере домашнего персонала
+              </li>
+              <li>Поддержка многодетных семей в бытовых вопросах</li>
+              <li>
+                Предоставление вакансий выпускникам педагогических и медицинских
+                учебных заведений
+              </li>
+              <li>Организация стажировок для молодых специалистов</li>
+              <li>Психологическая поддержка и укрепление семейных ценностей</li>
+            </ul>
+            <div className="flex flex-col border-t-[1.5px] pt-3.5 border-t-[#4AB3AA] mt-8">
+              <h4 className=" text-lg font-semibold text-[#283457] mb-1.5">
+                Премия «Вложение в семейные ценности» им. Греты Гевондян
+              </h4>
+              <p className=" text-gray-700 leading-relaxed mb-6">
+                Ежегодная премия для мам, которые преодолели сложные жизненные
+                ситуации и внесли значительный вклад в сохранение и укрепление
+                семейных ценностей.
+              </p>  
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Certificates */}
       <section className="bg-white py-16">
@@ -1125,20 +1176,12 @@ export default function Home() {
               {/* Help type */}
               <div className="mt-4">
                 <p className="text-white/80 mb-2">Какая помощь вам нужна?</p>
-            
-                  <label
-                 
-                    className="flex items-center gap-2 mb-2 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                checked
-                     
-                      className="accent-teal-500"
-                    />
-                    <span>{formData.helpType[0]}</span>
-                  </label>
-                
+
+                <label className="flex items-center gap-2 mb-2 cursor-pointer">
+                  <input type="checkbox" checked className="accent-teal-500" />
+                  <span>{formData.helpType[0]}</span>
+                </label>
+
                 {errors.helpType && (
                   <p className="text-red-400 text-sm">{errors.helpType}</p>
                 )}
